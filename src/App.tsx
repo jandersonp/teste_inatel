@@ -1,9 +1,14 @@
+import { Dashboard } from './components/Dashboard';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Header />
+      <Dashboard />
+      <Footer />
       <GlobalStyle />
     </>
   );
