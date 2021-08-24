@@ -1,10 +1,10 @@
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export function Footer() {
   return (
     <Container>
-      <button>Cancelar</button>
-      <button>Enviar</button>
+      <button type="button">Cancelar</button>
+      <button type="button">Enviar</button>
     </Container>
-  )
+  );
 }

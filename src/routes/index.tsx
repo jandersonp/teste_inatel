@@ -1,5 +1,5 @@
-import { Route, Switch } from "react-router-dom";
-import { Dashboard } from "../pages/Dashboard";
+import { Route, Switch } from 'react-router-dom';
+import { Dashboard } from '../pages/Dashboard';
 
 export function Routes() {
   return (
@@ -7,5 +7,5 @@ export function Routes() {
       <Route path="/" exact component={Dashboard} />
       {/* <Route path="/" exact component={Dashboard} /> */}
     </Switch>
-  )
+  );
 }

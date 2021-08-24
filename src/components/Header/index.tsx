@@ -10,5 +10,5 @@ export function Header() {
         <img src={logoInatel} alt="Logo inatel" />
       </Content>
     </Container>
-  )
+  );
 }

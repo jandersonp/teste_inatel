@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -45,7 +45,4 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 0.6;
       cursor: not-allowed;
     }
-
-
-
-`
+`;
