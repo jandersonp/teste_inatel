@@ -1,4 +1,5 @@
 import { useField } from '@unform/core';
+
 import { InputHTMLAttributes, useEffect, useRef } from 'react';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 type InputProps = InputHTMLAttributes<HTMLInputElement> & Props;
 
 export function Checkbox({ name, value, label, ...rest }: InputProps) {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement[]>([]);
 
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
@@ -20,26 +21,32 @@ export function Checkbox({ name, value, label, ...rest }: InputProps) {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      getValue: ref => {
-        return ref.current.checked;
+      getValue: (ref: HTMLInputElement[]) => {
+        return ref.filter(ref => ref.checked).map(ref => ref.value);
       },
-      clearValue: ref => {
-        ref.current.checked = defaultChecked;
+      clearValue: (ref: HTMLInputElement[]) => {
+        ref.forEach(ref => {
+          ref.checked = false;
+        });
       },
-      setValue: (ref, value) => {
-        ref.current.checked = value;
+      setValue: (ref: HTMLInputElement[], value: string[]) => {
+        ref.forEach(ref => {
+          if (value.includes(ref.id)) {
+            ref.checked = true;
+          }
+        });
       },
     });
-  }, [fieldName, registerField]);
+  }, [defaultValue, fieldName, registerField, defaultChecked]);
 
   return (
     <div>
       <input
         defaultChecked={defaultChecked}
-        ref={inputRef}
+        ref={(ref: HTMLInputElement) => inputRef.current.push(ref)}
         value={value}
         type="checkbox"
-        id={fieldName}
+        name={fieldName}
         {...rest}
       />
 
